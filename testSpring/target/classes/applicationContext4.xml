@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+    <bean id="grade_01" class="com.test.pojo.Grade" p:gid="1" p:gname="1902" />
+    <bean id="grade_02" class="com.test.pojo.Grade" p:gid="2" p:gname="1903" />
+
+
+    <bean id="testType_01" class="com.test.pojo.TestType">
+       <property name="arr">
+            <array>
+                <value>1</value>
+                <value>2</value>
+                <value>3</value>
+            </array>
+       </property>
+
+        <property name="grades">
+            <array>
+                <ref bean="grade_01" />
+                <ref bean="grade_02" />
+            </array>
+        </property>
+
+        <property name="stringList">
+             <list>
+                 <value>aa</value>
+                 <value>bb</value>
+                 <value>cc</value>
+             </list>
+        </property>
+
+        <property name="gradeList">
+             <list>
+                 <ref bean="grade_01" />
+                 <ref bean="grade_02" />
+             </list>
+        </property>
+
+        <property name="stringMap">
+            <map>
+                <entry key="uname" value="zhangsan"/>
+                <entry key="pwd" value="123"/>
+            </map>
+        </property>
+
+        <property name="gradeMap">
+            <map>
+                <entry key="grade1" value-ref="grade_01" />
+                <entry key="grade2" value-ref="grade_02" />
+            </map>
+        </property>
+
+        <property name="properties">
+               <props>
+                   <prop key="driver">com.mysql.jdbc.Driver</prop>
+                   <prop key="url">http://localhost:3306/1903</prop>
+               </props>
+        </property>
+
+    </bean>
+
+</beans>

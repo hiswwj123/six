@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+    <!-- 创建TestSpelMethod对象 -->
+    <bean id="testSpelMethod" class="com.test.spel.TestSpelMethod" />
+
+    <!-- 调用TestSpelMethod对象中的getGradeList()方法 ，
+    、将返回的结果存入gradeInfo对象的gradeList属性中 -->
+    <bean id="gradeInfo" class="com.test.pojo.GradeInfo">
+        <property name="sum" value="#{T(com.test.spel.TestSpelMethod).sum(3,5)}" />
+        <property name="gradeList" value="#{testSpelMethod.getGradeList()}"/>
+    </bean>
+
+
+</beans>

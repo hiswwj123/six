@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+    <bean id="student_01" class="com.test.pojo.Students" />
+
+    <!-- 调用   public Students(String name) -->
+    <bean id="student_02" class="com.test.pojo.Students">
+        <constructor-arg name="name" value="zhangsan" type="java.lang.String" />
+    </bean>
+
+    <bean id="grade_03" class="com.test.pojo.Grade">
+       <constructor-arg name="gid" value="1" />
+        <constructor-arg name="gname" value="1903" />
+    </bean>
+
+    <!-- 调用 public Students(Grade grade) -->
+    <bean id="student_03" class="com.test.pojo.Students">
+        <constructor-arg name="grade" ref="grade_03" />
+    </bean>
+
+    <!-- 调用 public Students(int sid,String name,int age,Grade grade) -->
+    <bean id="student_04" class="com.test.pojo.Students">
+        <constructor-arg name="sid" value="4" />
+        <constructor-arg name="name" value="lisi" />
+        <constructor-arg name="age" value="29" />
+        <constructor-arg name="grade" ref="grade_03" />
+    </bean>
+
+    <!--  调用 public Students(String name,int sid)
+          index 参数的位置
+    -->
+    <bean id="student_05" class="com.test.pojo.Students">
+        <constructor-arg name="name" value="wangwu" index="0" />
+        <constructor-arg name="sid" value="5" index="1" />
+    </bean>
+
+</beans>
